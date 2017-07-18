@@ -1,0 +1,54 @@
+// Hero
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.hero {
+    position: relative;
+    background-color: $color_background_hero;
+    background: linear-gradient($color_hero_overlay, $color_hero_overlay), url('./assets/img/hero.jpg'); // use this path if you're enqueing styles from root folder
+    // background: linear-gradient($color_hero_overlay, $color_hero_overlay), url('../img/hero.jpg'); // use this path if you're enqueing styles from assets/css
+    min-height: 22rem;
+    height: 40vh;
+    border: none;
+    text-align: left;
+    
+    @include bgImage;
+    @include innerShadow;
+
+    @include tablet {
+        height:50vh;
+    }
+
+    // full-height header for homepage and single blog posts
+    // .single &, 
+    .home & {
+        height:100vh;
+    }
+
+    // adjust for admin bar when logged in
+    // .home.single &,  
+    .home.admin-bar & {
+        height: calc(100vh - 32px);
+    }
+}
+
+.heading {
+    position:absolute;
+    top:50%;
+    width:100%;
+    // transform: translate(0,-50%); // vertically center hero text
+
+    // .single &, // single blog posts
+    .home & {
+        transform: translate(0,-50%); // vertically center hero text
+    }
+}
+
+.call-to-action {
+    position: relative;
+    max-width: 560px;
+    // z-index: 1;
+
+    // background-color: $color_background-callout;
+    // padding: 4rem 5rem;
+    // border-radius: $border_radius;
+    // @include dropShadow;
+}

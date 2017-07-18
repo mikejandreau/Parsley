@@ -1,0 +1,139 @@
+// LOGIN PAGE STYLES
+// Uses the same variables and mixins as main stylesheet for consistency
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+@import "base/variables";
+@import "base/mixins";
+
+// HTML is set to 62.5% for consistent REM measurements
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+// Body class for the login page
+.login  {
+	background-color: $color_background_hero;
+	background: linear-gradient($color_hero_overlay, $color_hero_overlay), url('../img/hero.jpg'); 
+	@include font-size(1);
+	@include bgImage;
+
+	// Container of the login form, max-width uses REMs with px fallback
+	#login { 
+		width: 90%; 
+		max-width: 360px; 
+		max-width: 36rem; 
+	}
+
+	// Login page logo
+	h1 a {
+		background-image: url('../img/logo.png'); 
+		// background-image: none, url('../../assets/img/logo.svg'); // if you have an SVG version, uncomment this
+		background-position: center top;
+		background-repeat: no-repeat;
+		background-size: $loginLogoWidth $loginLogoHeight;
+		width: $loginLogoWidth;
+		height: $loginLogoHeight;
+		margin: 0 auto ($column_margin * 1.5);
+		padding: 0;
+		color: #999;
+		font-size: 2rem;
+		line-height: 1.3em;
+		text-indent: -9999px;
+		text-decoration: none;
+		font-weight: normal;
+		overflow: hidden;
+		outline: none;
+		display: block;
+	}
+
+	// Login form
+	form {
+		padding: $column_margin;
+		background: $color_background_body;
+		box-shadow: 0 0 $border_radius 0px rgba(0, 0, 0, 0.2);
+		border-radius: $border_radius;
+
+		// Login form text areas
+		#user_login,
+		#user_pass {
+			width: 100%;
+			height: $font_line_height_forms;
+			padding: 6px 12px; // The 6px vertically centers text on FF, ignored by Webkit
+			border: 1px solid lighten($button_color_border, 5%);
+			border-radius: $border_radius;
+			margin: ($column_margin / 4) 0 $column_margin;
+			box-shadow: none;
+			background-color: $color_background_body;
+			color: $color_text_main;
+			@include font-size(1.2);
+
+			&:focus {
+				border-color: $brand_primary;
+				box-shadow: none;
+				outline: 0;
+			}
+		}
+
+		// Remember checkbox
+		.forgetmenot {
+			line-height: $font_line_height_forms;
+
+			label {
+				@include font-size(.8);
+			}
+		}
+	}
+
+	// Login button
+	#wp-submit {
+		text-transform: uppercase;
+		text-shadow: none;
+		box-shadow: none;
+		color: $color_white;
+		background: $brand_primary;
+		border-color: $brand_primary;
+		line-height: $font_line_height_forms;
+		height: $font_line_height_forms;
+		padding: 0 $column_margin;
+		letter-spacing: .1rem;
+		font-weight: 300;
+		transition: $transistion_duration;
+
+		&:focus,
+		&:hover {
+			color: $color_white;
+			background: darken($brand_primary, 10%);
+			border-color: darken($brand_primary, 10%);
+		}
+	}
+
+	// Password reset and home links below form
+	#nav,
+	#backtoblog {
+		@include font-size(0.9);
+
+		a {
+			text-decoration: none;
+			transition: $transistion_duration;
+			color: $brand_primary;
+
+			&:hover {
+				color: darken($brand_primary, 10%);
+			}
+		}
+	}
+}
+
+// Overrides Chrome/Safari autofill background and fill colors
+@-webkit-keyframes autofill {
+	to {
+		color: $color_text_main;
+		background: transparent;
+	}
+}
+
+input:-webkit-autofill {
+	-webkit-animation-name: autofill;
+	-webkit-animation-fill-mode: both;
+}

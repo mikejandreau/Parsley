@@ -1,0 +1,72 @@
+/*!
+Theme Name: Base Install 4.0.0
+Theme URI: https://github.com/mikejandreau/Base-Install
+Author: Mike Jandreau
+Author URI: https://www.mikejandreau.net/
+Description: WordPress developer boilerplate
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: baseinstall
+*/
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+// TABLE OF CONTENTS
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// BASE COMPONENTS
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@import "base/variables";
+@import "base/mixins";
+@import "base/normalize";
+@import "base/elements";
+@import "base/lists";
+@import "base/tables";
+
+// TYPOGRAPHY, HEADINGS, COPY, CODE
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@import "typography/typography";
+@import "typography/headings";
+@import "typography/copy";
+@import "typography/prism"; // code highlighter, default theme - optional
+
+// FORMS
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@import "forms/forms";
+@import "forms/buttons";
+
+// NAVIGATION MENU, SCROLLUP, LINKS
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@import "navigation/navigation";
+@import "navigation/hamburger";
+@import "navigation/scrollup";
+@import "navigation/links";
+
+// MODULES
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@import "modules/accessibility";
+@import "modules/alignments";
+@import "modules/clearings";
+@import "modules/infinite-scroll";
+
+// SITE CONTENT, WIDGETS, POSTS/PAGES, COMMENTS
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@import "site/widgets";
+@import "site/posts-and-pages";
+@import "site/comments";
+
+// GRID, HEADER, FOOTER, CONTENT/SIDEBAR LAYOUT
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@import "layout/grid";
+@import "layout/header";
+@import "layout/hero";
+@import "layout/featured";
+@import "layout/content-sidebar"; // content left, sidebar right
+// @import "layout/sidebar-content"; // content right, sidebar left
+@import "layout/footer";
+
+// MEDIA
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@import "media/media";
+@import "media/captions";
+@import "media/galleries";

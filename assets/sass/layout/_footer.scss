@@ -1,0 +1,91 @@
+// footer styles
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.site-footer {
+	background-color: $color_background_footer;
+	width: 100%;
+	border-top: 1px solid darken($color_background_footer, 5%);
+	padding: ($header_height / 3) 0;
+
+	@include laptop {
+		padding: ($header_height / 2) 0;
+	}
+}
+
+.site-info {
+	@extend .container; // keeps copyright info lined up with body content
+	@include font-size(.9);
+}
+
+.copyright {
+	display: block;
+	text-align: center;
+
+	@include phablet {
+		display: inline-block;
+		text-align: left;
+	}
+}
+
+.designer {
+	display: block;
+	text-align: center;
+
+	@include phablet {
+		display: inline-block;
+		float: right;
+		text-align: right;
+	}
+}
+
+
+
+.footer-callout {
+	background-color: $color_background_prefooter;
+	padding: ($column_margin * 1.5) 0;
+
+	@include laptop {
+		padding: ($column_margin * 2) 0;
+	}
+
+	p {
+		line-height: 1.2;
+		margin-bottom: $column_margin;
+		@include font-size(1.2);
+
+		@include tablet {
+			margin-bottom: 0;
+			line-height: $font_line_height_forms;
+			@include font-size(1.5);
+		}
+	}
+
+	.button {
+		margin-bottom: 0;
+
+		@include tablet {
+			display: block;
+		}
+	}
+}
+
+
+
+// affix footer fix to bottom if content doesn't fill the page
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.site {
+	display: flex;
+	flex-direction: column;
+	height: 100vh; // Avoid the IE 10-11 `min-height` bug.
+}
+
+// Prevent Chrome, Opera, and Safari from letting these items   
+// shrink smaller than their content's default minimum size.
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.site-header,
+.site-footer {
+	flex-shrink: 0; 
+}
+
+.site-content-wrap {
+	flex: 1 0 auto; 
+}

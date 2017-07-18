@@ -1,0 +1,197 @@
+// Post and page spacing
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.sticky {
+	display: block;
+}
+
+.cat-links,
+.tags-links {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 ($column_margin * 2);
+}
+
+.byline,
+.updated:not(.published){
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	// margin: 1.5em 0 0;
+	margin: 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+.entry-meta {
+	margin-bottom: 1.5em;
+}
+
+// Post spacing for lists of posts
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+article + article {
+	border-top: 1px solid $color_background_hr;
+	padding-top: $column_margin * 2;
+}
+
+// Previous/Next links on single posts
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.post-navigation {
+	margin: 0 0 1.5em;
+
+	a {
+		display: block;
+		text-align: center;
+		border:none;
+		text-decoration: none;
+		margin-bottom: $column_margin * 2;
+		padding: 6rem $column_margin;
+		color: #fff;
+		transition: background-color $transistion_duration;
+
+		&:hover {
+			background-color:rgba(0,0,0,0.5);
+		}
+
+		@include phablet {
+			height: 20rem;
+		}
+	}
+
+	h5 {
+		@include bgImage;
+	}
+}
+
+
+// Related posts links on single posts (optional)
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.related-posts {
+	@extend .post-navigation;
+
+	h3 {
+		margin-bottom: 1.5rem;
+	}
+}
+
+
+// Comment and post navigation
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.comment-navigation,
+.posts-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+		overflow: hidden;
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+	}
+}
+
+
+
+// Blog section on static front page
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.blog-section {
+	// text-align: center;
+	padding: $column_margin 0;
+	background: $color_background_blog;
+
+	@include tablet {
+		padding: ($column_margin * 2) 0;
+	}
+
+	.button {
+		margin-bottom: 0;
+	}
+}
+
+.blog-feature {
+	background-color: #fff;
+	margin-bottom: $column_margin * 2;
+	border: 1px solid $color_background_lightgray;
+	border-radius: $border_radius;
+	overflow: hidden;
+	// @include dropShadow;
+}
+
+.blog-image {
+	margin: 0 0 $column_margin;
+
+	a {
+		@include aspectRatio(16,9);
+		@include bgImage;
+		background-color: #efefef;
+		display: block;
+		margin: 0;
+	}
+}
+
+.blog-text {
+	padding: 0 $column_margin $column_margin;
+	text-align: left;
+
+	h3 {
+		font-size: 2.0rem;
+		margin-bottom: 1rem;
+
+		@include tablet {
+			height: 56px;
+			height: 5.6rem;
+		}
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	p {
+		overflow: hidden;
+		margin: 0 0 1rem;
+		position: relative;
+
+		@include tablet {
+			height: 120px;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0px;
+			left: 0;
+			z-index: 3;
+			width: 100%;
+			height: 120px;
+			background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+		}
+	}
+
+	.blog-author-date {
+		margin-bottom: 1rem;
+	}
+
+  .button {
+    display: block;
+  }
+}

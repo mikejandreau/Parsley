@@ -1,0 +1,35 @@
+// Tables
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.responsive-table {
+	overflow-x: auto;
+}
+
+table {
+	margin: 0 0 1.5em;
+	width: 100%;
+}
+
+th,
+td {
+	padding: 12px 15px;
+	text-align: left;
+	border-bottom: 1px solid #eee;
+}
+
+th {
+	font-weight: bold;
+}
+
+td {
+	font-weight: normal;
+}
+
+th:first-child,
+td:first-child {
+	padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+	padding-right: 0;
+}

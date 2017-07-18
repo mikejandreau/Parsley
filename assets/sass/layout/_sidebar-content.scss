@@ -1,0 +1,39 @@
+// content right, sidebar left
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@include tablet {
+	.content-area {
+		float: right;
+		margin: 0 0 0 (-$size_site_sidebar);
+		width: $size_site_main;
+	}
+
+	.site-main {
+		margin: 0 0 0 $size_site_sidebar;
+		padding-left: $column_margin * 2;
+	}
+
+	.site-content .widget-area {
+		float: left;
+		overflow: hidden;
+		width: $size_site_sidebar;
+	}
+
+	.site-footer {
+		clear: both;
+		width: $size_site_main;
+	}
+}
+
+@include desktop {
+	.content-area {
+		margin: 0 0 0 (-$size_site_sidebar_desktop);
+	}
+
+	.site-main {
+		margin: 0 0 0 $size_site_sidebar_desktop;
+	}
+
+	.site-content .widget-area {
+		width: $size_site_sidebar_desktop;
+	}
+}

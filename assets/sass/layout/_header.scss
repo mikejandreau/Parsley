@@ -1,0 +1,78 @@
+// Header styles
+// full header with branding, title, description, and nav
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.site-header { 
+	background-color: $color_background_header;
+	// border-bottom: 1px solid darken($color_background_header, 5%);
+	@include absoluteHeader; // uncomment to set absolute header
+
+	@include dropShadow;
+
+	// @include fixedHeader; // uncomment to set fixed header, and also uncomment related fixedHeader mixins below
+
+	// @include laptop {
+		// padding: ($column_margin / 2) 0;
+	// }
+}
+
+.site-navbar {
+	@extend .container; // keeps navbar content lined up with body content
+}
+
+// site title and description
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.site-branding { 
+	display: inline-block;
+}
+
+// site title only
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.site-title { 
+	// background-color: rgba(0,255,0,0.5);
+	// margin: 0 0 0 ($column_margin / 1.5);
+	line-height: $header_height;
+
+	a {
+		text-decoration: none;
+	}
+}
+
+// site description only (optional)
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+// .site-description { 
+// 	background-color: rgba(0,0,255,0.5);
+// 	margin: 0;
+// }
+
+
+
+// WP admin bar bix
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.site {
+	@include wpAdminBodyAdjustment; // Adjust body for admin bar
+	// @include fixedHeaderBodyAdjustment; // uncomment to adjust body for fixed header
+}
+
+// Offset internal anchor links to keep them on screen
+//––––––––––––––––––––––––––––––––––––––––––––––––––,
+// #content:before, // maybe remove this later
+.scroll-anchor:before { 
+	display: block; 
+	content: ""; 
+	visibility: hidden; 
+	@include anchor_offset; // offset internal anchor links, comment out to use fixed header mixin below
+	// @include fixedHeaderanchor_offset; // uncomment to offset internal anchor links with fixed header
+}
+
+
+// Pad the top of the content area below the header/hero
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.pad-top,
+.content-area,
+.widget-area {
+	padding-top: $column_margin;
+
+	@include tablet {
+		padding-top: $column_margin * 2;
+	}
+}

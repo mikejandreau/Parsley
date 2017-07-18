@@ -1,0 +1,293 @@
+// Page sections and featured items
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// this is the base featured block, uses top padding and bottom margins
+// to give equal spacing between top/bottom of section and between divs
+.section { 
+  padding: $column_margin 0 0;
+
+  @include tablet {
+    padding-top: $column_margin * 2;
+  }
+
+  .column {
+    margin-bottom: $column_margin;
+
+    @include tablet {
+      margin-bottom: $column_margin * 2;
+    }
+  }
+}
+
+// this is the subsection block
+.subsection {
+  background: $color_background_featured;
+  text-align: center;
+  
+  p {
+    margin: 0;
+    line-height: 6rem;
+  }
+}
+
+// alternate background color for section/subsection
+.section-alt {
+  background-color: $color_background_featured;
+
+  .subsection {
+    background-color: #fff;
+  }
+}
+
+// styles for the section just below the hero
+.strapline {
+  background: $color_background_strapline;
+  border: 1px solid lighten($button_color_border, 15%);
+
+  p {
+    margin: 0;
+  }
+}
+
+
+
+.featured-image-container {
+    margin-bottom: $column_margin * 2;
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+}
+
+
+
+
+
+
+// move to blog styles
+.blog-sample {
+  background: #eee;
+  padding: $column_margin;
+  height: 360px;
+  margin-bottom: $column_margin * 2;
+}
+
+
+
+
+
+
+// .about-img {
+//   @include aspectRatio(4,3);
+//   background-color: $hero-bg-color;
+//   // background-image: url(https://dl.dropboxusercontent.com/u/60183450/featured01.jpg);
+//   background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./assets/img/hero-home.jpg');
+//   @include bgImage;
+//   text-align: center;
+//   margin-bottom: 2em;
+// }
+
+
+
+
+
+
+// // .blog-section,
+// .service-section {
+//   background-color: $light-grey;
+//   // background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(https://dl.dropboxusercontent.com/u/60183450/featured01.jpg);
+//   // background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('./assets/img/hero-home.jpg');
+//   // @include bgImage;
+//   padding: 4rem 0;
+//   // text-align: center;
+//   @include innerShadow;
+//   @include bgImage;
+
+//   // .service-section-img {
+
+//   // }
+// }
+
+// .service-section-img {
+//   background-image: url('https://placeholdit.imgix.net/~text?txtsize=36&bg=cccccc&txtclr=ffffff&txt=No%20Image&w=600&h=600&fm=jpg');
+//   @include aspectRatio(4,3);
+//   @include bgImage;
+//   margin: 0 0 2rem;
+//   // margin: 0;
+//   @include dropShadow;
+
+//   .service-section & {
+//     @include laptop {
+//       margin: 0;
+//     }
+//   }
+// }
+
+// .featured-section {
+//   background-color: #fff;
+//   // background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(https://dl.dropboxusercontent.com/u/60183450/featured01.jpg);
+//   // background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('./assets/img/hero-home.jpg');
+//   // @include bgImage;
+//   padding: 4rem 0;
+//   // text-align: center;
+//   // @include innerShadow;
+// }
+
+
+// .blog-feature {
+//   background-color: #fff;
+//   margin-bottom: 4rem;
+//   @include dropShadow;
+// }
+
+// .blog-image {
+//   margin: 0 0 2rem;
+
+//   a {
+//     @include aspectRatio(16,9);
+//     background-color: #efefef;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     background-size: cover;
+//     display: block;
+//     margin: 0;
+//   }
+// }
+
+// .blog-text {
+//   padding: 0 2rem 2rem;
+//   text-align: left;
+
+//   h3 {
+//     font-size: 2.0rem;
+//     margin-bottom: 1rem;
+//   }
+
+//   a {
+//     text-decoration: none;
+//   }
+  
+//   p {
+//     overflow: hidden;
+//     margin: 0 0 1rem;
+//     position: relative;
+
+//     @include laptop {
+//       height: 120px;
+//     }
+
+//     &::after {
+//       content: '';
+//       position: absolute;
+//       top: 3px;
+//       left: 0;
+//       z-index: 3;
+//       width: 100%;
+//       height: 120px;
+//       background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+//     }
+//   }
+
+//   .blog-author-date {
+//     margin-bottom: 1rem;
+//   }
+
+//   .button {
+//     display: block;
+//     margin-bottom: 0;
+//   }
+// }
+
+// .noise {
+//   // background-image: url(../images/noise.png);
+//   background-image: url('./assets/img/noise.png');
+// }
+
+
+
+
+
+
+
+
+
+
+// $animation-delay: 5s;
+
+// .slideshow {
+//   display: none;
+
+//   @include tablet {
+//     display: block;
+//     list-style: none;
+//     z-index: 1;
+//     margin: 0;
+//     padding: 0;
+
+//     li {
+//       margin: 0;
+//       padding: 0;
+
+//       span {
+//         @include bgImage;
+//         width: 100%;
+//         height: 100%;
+//         position: absolute;
+//         top: 0px;
+//         left: 0px;
+//         color: transparent;
+//         opacity: 0;
+//         z-index: 0;
+//         backface-visibility: hidden;
+//         animation: imageAnimation ($animation-delay * 4) linear infinite 0s
+//       }
+
+//       // &:nth-child(1) span {
+//       //   background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/summer-slide.jpg);
+//       // }
+
+//       &:nth-child(2) span {
+//         // background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/fall-slide.jpg);
+//         animation-delay: $animation-delay;
+//       }
+
+//       &:nth-child(3) span {
+//         // background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/winter-slide.jpg);
+//         animation-delay: ($animation-delay * 2);
+//       }
+
+//       &:nth-child(4) span {
+//         // background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/spring-slide.jpg);
+//         animation-delay: ($animation-delay * 3);
+//       }
+//     }
+//   }
+// }
+
+// @keyframes imageAnimation {
+//   0% {
+//     opacity: 0;
+//     animation-timing-function: ease-in;
+//   }
+//   12.5% {
+//     opacity: 1;
+//     animation-timing-function: ease-out;
+//   }
+//   25% {
+//     opacity: 1;
+//   }
+//   37.5% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 0;
+//   }
+// }
+
+// .no-cssanimations .slideshow li span {
+//   opacity: 1;
+// }
+

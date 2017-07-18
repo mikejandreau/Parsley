@@ -1,0 +1,221 @@
+
+// Media queries
+// @include mobile { selector: style; }
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin mobile   { @media (min-width: #{$width_mobile})  { @content; } }
+@mixin phablet  { @media (min-width: #{$width_phablet}) { @content; } }
+@mixin tablet   { @media (min-width: #{$width_tablet})  { @content; } }
+@mixin laptop   { @media (min-width: #{$width_laptop})  { @content; } }
+@mixin desktop  { @media (min-width: #{$width_desktop}) { @content; } }
+@mixin hdtv     { @media (min-width: #{$width_hdtv})    { @content; } }
+@mixin nomobile { @media (max-width: #{$hidden_mobile}) { @content; } }
+@mixin nophablet { @media (max-width: #{$hidden_phablet}) { @content; } }
+@mixin wpadmin	{ @media (min-width: #{$wordpress_admin}) { @content; } }
+
+
+// Aspect ratio mixin
+// @include aspectRatio(16, 9);
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin aspectRatio($ratio-or-width, $height: null) {
+	$padding: if($height, percentage($height/$ratio-or-width), percentage(1/$ratio-or-width));
+	&:before { content:''; float: left; padding-bottom: $padding; }
+	&:after  { content:''; display: table; clear: both; } 
+}
+
+// Position element at center of parent
+// @include absoluteCenter;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin absoluteCenter {
+	margin: auto;
+	position: absolute;
+	top: 0; 
+	left: 0; 
+	bottom: 0; 
+	right: 0;
+}
+
+// Code syntax so line numbers are not selectable
+// @include unselectable;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin unselectable() {
+	user-select: none;
+}
+
+// Make background images fill div, marked !important to override WordPress featured image placement
+// @include bgImage;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin bgImage() {
+	background-repeat: no-repeat !important; 
+	background-position: center !important;
+	background-size: cover !important;
+}
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+// Top and bottom inset box shadow
+// @include innerShadow;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin innerShadow() {
+    box-shadow: inset 0 $shadow-size $shadow-size (-$shadow-size) $shadow-inset, inset 0 (-$shadow-size) $shadow-size (-$shadow-size) $shadow-inset;
+}
+
+// Outer box shadow
+// @include dropShadow;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin dropShadow() {
+    box-shadow: 0 0 $shadow-size 0 $shadow-outer, 0 0 $shadow-size 0 $shadow-outer;
+}
+
+// Rem output with px fallback
+// HTML set to 62.5% so REM measurements based on 10px sizing - basically 1.5rem = 15px
+// @include font-size(.9);
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * $font_size_base) * 1px;
+	font-size: $sizeValue * $font_size_rem;
+}
+
+// Center block
+// @include center-block;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+// @include clearfix;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin clearfix() {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+// Clear after (not all clearfix need this)
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin clearfix-after() {
+	clear: both;
+}
+
+
+
+
+// Set absolute header
+// @include absoluteHeader;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin absoluteHeader() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+
+	.admin-bar & {
+		top: $wp_adminbar_sm;
+
+		@include wpadmin {
+			top: $wp_adminbar_lg;
+		}
+	}
+}
+
+// Set fixed header
+// @include fixedHeader;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin fixedHeader() {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+
+	.admin-bar & {
+		top: $wp_adminbar_sm;
+
+		@include wpadmin {
+			top: $wp_adminbar_lg;
+		}
+	}
+}
+
+// Adjust body for admin bar
+// @include wpAdminBodyAdjustment;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin wpAdminBodyAdjustment() {
+	padding: 0;
+
+	.admin-bar & {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding-top: $wp_adminbar_sm;
+
+		@include wpadmin {
+			padding-top: $wp_adminbar_lg;
+		}
+	}
+}
+
+// Adjust body for fixed header
+// @include fixedHeaderBodyAdjustment;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin fixedHeaderBodyAdjustment() {
+	padding-top: $header_height;
+
+	.admin-bar & {
+		padding-top: $header_height + $wp_adminbar_sm;
+
+		@include wpadmin {
+			padding-top: $header_height + $wp_adminbar_lg;
+		}
+	}
+}
+
+
+
+// Offset internal anchor links
+// @include anchor_offset;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin anchor_offset() {
+	margin-top: -$column_margin;
+	height: $column_margin;
+
+	.admin-bar & {
+		margin-top: -$column_margin - $wp_adminbar_sm;
+		height: $column_margin + $wp_adminbar_sm;
+
+		@include wpadmin {
+			margin-top: -$column_margin - $wp_adminbar_lg;
+			height: $column_margin + $wp_adminbar_lg;
+		}
+	}
+}
+
+// Offset internal anchor links with fixed header
+// @include fixedHeaderanchor_offset;
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin fixedHeaderanchor_offset() {
+	margin-top: -$anchor_offset; 
+	height: $anchor_offset; 
+
+	.admin-bar & {
+		margin-top: -$anchor_offset - $wp_adminbar_sm;
+		height: $anchor_offset + $wp_adminbar_sm;
+
+		@include wpadmin {
+			margin-top: -$anchor_offset - $wp_adminbar_lg;
+			height: $anchor_offset + $wp_adminbar_lg;
+		}
+	}
+}
+
+
+
+
