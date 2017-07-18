@@ -7,7 +7,7 @@
  * @package Base_Install
  */
 
-if ( ! function_exists( 'baseinstall_setup' ) ) :
+if ( ! function_exists( 'parsley_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -15,14 +15,14 @@ if ( ! function_exists( 'baseinstall_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function baseinstall_setup() {
+function parsley_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on Base Install, use a find and replace
-	 * to change 'baseinstall' to the name of your theme in all the template files.
+	 * to change 'parsley' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'baseinstall', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'parsley', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -44,7 +44,7 @@ function baseinstall_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'baseinstall' ),
+		'menu-1' => esc_html__( 'Primary', 'parsley' ),
 	) );
 
 	/*
@@ -60,7 +60,7 @@ function baseinstall_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'baseinstall_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'parsley_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
@@ -69,7 +69,7 @@ function baseinstall_setup() {
 	add_theme_support( 'customize-selective-refresh-widgets' );
 }
 endif;
-add_action( 'after_setup_theme', 'baseinstall_setup' );
+add_action( 'after_setup_theme', 'parsley_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -78,59 +78,59 @@ add_action( 'after_setup_theme', 'baseinstall_setup' );
  *
  * @global int $content_width
  */
-function baseinstall_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'baseinstall_content_width', 640 );
+function parsley_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'parsley_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'baseinstall_content_width', 0 );
+add_action( 'after_setup_theme', 'parsley_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function baseinstall_widgets_init() {
+function parsley_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'baseinstall' ),
+		'name'          => esc_html__( 'Sidebar', 'parsley' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'baseinstall' ),
+		'description'   => esc_html__( 'Add widgets here.', 'parsley' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'baseinstall_widgets_init' );
+add_action( 'widgets_init', 'parsley_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  * The first stylesheet is the minified version (maybe rename to main or styles later)
  * The second stylesheet is the one WordPress needs to show theme name, version, description, and author info
  */
-function baseinstall_scripts() {
+function parsley_scripts() {
 
 	// minified stylesheet
-	// wp_enqueue_style( 'baseinstall-min-style', get_template_directory_uri() . '/style.min.css', array(), time() ); 
+	// wp_enqueue_style( 'parsley-min-style', get_template_directory_uri() . '/style.min.css', array(), time() ); 
 
 	// theme styles
-	wp_enqueue_style( 'baseinstall-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'parsley-style', get_stylesheet_uri() );
 
 	// theme scripts
-	wp_enqueue_script( 'baseinstall-navigation', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '20151215', true ); 
+	wp_enqueue_script( 'parsley-navigation', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '20151215', true ); 
 
 	// responsive media queries for IE
-	wp_enqueue_script( 'baseinstall-respond', get_template_directory_uri().'/assets/vendor/js/respond.min.js' );
-	wp_script_add_data( 'baseinstall-respond', 'conditional', 'lt IE 9' );
+	wp_enqueue_script( 'parsley-respond', get_template_directory_uri().'/assets/vendor/js/respond.min.js' );
+	wp_script_add_data( 'parsley-respond', 'conditional', 'lt IE 9' );
 
 	// html5shiv for IE
-	wp_enqueue_script( 'baseinstall-html5shiv',get_template_directory_uri().'/assets/vendor/js/html5shiv.min.js');
-	wp_script_add_data( 'baseinstall-html5shiv', 'conditional', 'lt IE 9' );
+	wp_enqueue_script( 'parsley-html5shiv',get_template_directory_uri().'/assets/vendor/js/html5shiv.min.js');
+	wp_script_add_data( 'parsley-html5shiv', 'conditional', 'lt IE 9' );
 
 	// comment script
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'baseinstall_scripts' );
+add_action( 'wp_enqueue_scripts', 'parsley_scripts' );
 
 
 
@@ -139,19 +139,19 @@ add_action( 'wp_enqueue_scripts', 'baseinstall_scripts' );
  * If Bootstrap is your thing, enqueue these styles and scripts 
  */
 /*
-function baseinstall_enqueue_scripts() {
+function parsley_enqueue_scripts() {
 // jQuery is stated as a dependancy of bootstrap-js - it will be loaded by WordPress before the BS scripts 
 	wp_enqueue_script( 'bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('jquery'), true);
 }
-add_action('wp_enqueue_scripts', 'baseinstall_enqueue_scripts');
+add_action('wp_enqueue_scripts', 'parsley_enqueue_scripts');
 
-function baseinstall_enqueue_styles() {
+function parsley_enqueue_styles() {
 	wp_enqueue_style( 'bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' );
 
 // this will add the stylesheet from the default theme location
 	wp_enqueue_style( 'custom-css', get_template_directory_uri() . '/style.css');
 }
-add_action('wp_enqueue_scripts', 'baseinstall_enqueue_styles');
+add_action('wp_enqueue_scripts', 'parsley_enqueue_styles');
 */
 
 
@@ -204,7 +204,7 @@ require get_template_directory() . '/inc/theme-options.php';
  * RESPONSIVE VIDEO EMBED
  * Filter for adding wrappers around embedded objects
  */
-function baseinstall_responsive_embeds( $content ) {
+function parsley_responsive_embeds( $content ) {
 	$content = preg_replace( "/<object/Si", '<div class="video-container"><object', $content );
 	$content = preg_replace( "/<\/object>/Si", '</object></div>', $content );
 	
@@ -213,7 +213,7 @@ function baseinstall_responsive_embeds( $content ) {
 	$content = preg_replace( "/<\/iframe>/Si", '</iframe></div>', $content );
 	return $content;
 }
-add_filter( 'the_content', 'baseinstall_responsive_embeds' );
+add_filter( 'the_content', 'parsley_responsive_embeds' );
 
 
 
@@ -221,11 +221,11 @@ add_filter( 'the_content', 'baseinstall_responsive_embeds' );
  * LINK SCROLL
  * remove link scroll from "read more" excerpt links
  */
-function baseinstall_remove_more_link_scroll( $link ) {
+function parsley_remove_more_link_scroll( $link ) {
 	$link = preg_replace( '|#more-[0-9]+|', '', $link );
 	return $link;
 }
-add_filter( 'the_content_more_link', 'baseinstall_remove_more_link_scroll' );
+add_filter( 'the_content_more_link', 'parsley_remove_more_link_scroll' );
 
 /**
  * EXCERPT LENGTH
@@ -241,7 +241,7 @@ add_filter( 'the_content_more_link', 'baseinstall_remove_more_link_scroll' );
  * Enable featured image to be background of hero block (default hero image in hero.scss)
  * If featured image has been set, this function gets ID/URL of image and overrides default CSS 
  */
-function baseinstall_custom_header_image(){
+function parsley_custom_header_image(){
 	if (has_post_thumbnail()) { // if a thumbnail has been set
 		$imgID = get_post_thumbnail_id($post->ID); // get id of featured image
 		$featuredImage = wp_get_attachment_image_src($imgID, 'full' ); // get url of featured image (returns array)
@@ -255,7 +255,7 @@ function baseinstall_custom_header_image(){
 		<?php
 	}
 }
-add_action( 'wp_head', 'baseinstall_custom_header_image' );
+add_action( 'wp_head', 'parsley_custom_header_image' );
 
 
 
@@ -263,28 +263,28 @@ add_action( 'wp_head', 'baseinstall_custom_header_image' );
  * CUSTOM LOGIN SCREEN
  * overrides default WP logo, background image/color, and form styles
  */
-function baseinstall_login_stylesheet() {
+function parsley_login_stylesheet() {
 	wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/assets/css/login-style.css' );
 }
-add_action( 'login_enqueue_scripts', 'baseinstall_login_stylesheet' );
+add_action( 'login_enqueue_scripts', 'parsley_login_stylesheet' );
 
 /**
  * CUSTOM LOGIN SCREEN LOGO LINK
  * Redirect custom login logo link to homepage
  */
-function baseinstall_login_logo_url() {
+function parsley_login_logo_url() {
     return home_url();
 }
-add_filter( 'login_headerurl', 'baseinstall_login_logo_url' );
+add_filter( 'login_headerurl', 'parsley_login_logo_url' );
 
 /**
  * CUSTOM LOGIN SCREEN LOGO TITLE
  * Update custom login logo page title
  */
-function baseinstall_login_logo_url_title( $title ) {
+function parsley_login_logo_url_title( $title ) {
 	return esc_attr( get_bloginfo( 'title' ) );
 }
-add_filter( 'login_headertitle', 'baseinstall_login_logo_url_title' );
+add_filter( 'login_headertitle', 'parsley_login_logo_url_title' );
 
 
 
@@ -292,14 +292,14 @@ add_filter( 'login_headertitle', 'baseinstall_login_logo_url_title' );
  * FAVICONS
  * Add custom favicons to admin dashboard and front end of site
  */
-function baseinstall_admin_favicon() {
+function parsley_admin_favicon() {
 	$admin_favicon_url = get_stylesheet_directory_uri() . '/assets/favicons';
 	echo '<link rel="shortcut icon" href="' . $admin_favicon_url . '/admin-favicon.ico" />';
 }
-add_action('login_head', 'baseinstall_admin_favicon');
-add_action('admin_head', 'baseinstall_admin_favicon');
+add_action('login_head', 'parsley_admin_favicon');
+add_action('admin_head', 'parsley_admin_favicon');
 
-function baseinstall_main_favicon() {
+function parsley_main_favicon() {
 	$main_favicon_url = get_stylesheet_directory_uri() . '/assets/favicons';
 	echo '
 	<link rel="shortcut icon" href="' . $main_favicon_url . '/favicon.ico" />
@@ -312,7 +312,7 @@ function baseinstall_main_favicon() {
 	<meta name="theme-color" content="#ffffff">
 	';
 }
-add_action('wp_head', 'baseinstall_main_favicon');
+add_action('wp_head', 'parsley_main_favicon');
 
 
 
@@ -322,13 +322,13 @@ add_action('wp_head', 'baseinstall_main_favicon');
  * You can have multiple wrappers (base-single.php, base-page.php, etc.) and they can be overwritten like any other template
  * Based on Scribu and Sage
  */
-function baseinstall_template_path() {
-	return baseinstall_wrapper::$main_template;
+function parsley_template_path() {
+	return parsley_wrapper::$main_template;
 }
-function baseinstall_template_base() {
-	return baseinstall_wrapper::$base;
+function parsley_template_base() {
+	return parsley_wrapper::$base;
 }
-class baseinstall_wrapper {
+class parsley_wrapper {
 
 	// Stores the full path to the main template file
 	static $main_template;
@@ -346,7 +346,7 @@ class baseinstall_wrapper {
 		return locate_template( $templates );
 	}
 }
-add_filter( 'template_include', array( 'baseinstall_wrapper', 'wrap' ), 99 );
+add_filter( 'template_include', array( 'parsley_wrapper', 'wrap' ), 99 );
 
 
 

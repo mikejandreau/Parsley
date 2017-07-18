@@ -17,14 +17,14 @@
 // Project configuration for gulp tasks
 
 // START Editing Project Variables
-var project                 = 'Base_Install'; // Project Name.
-var projectURL              = 'baseinstall'; // Project URL. Could be something like localhost:8888.
+var project                 = 'Parsley'; // Project Name.
+var projectURL              = 'dev4'; // Project URL. Could be something like localhost:8888.
 var productURL              = './'; // Theme/Plugin URL. Leave it like it is, since our gulpfile.js lives in the root folder.
 
 // Translation related
-var text_domain             = 'baseinstall'; // Your textdomain here.
-var destFile                = 'baseinstall.pot'; // Name of the transalation file.
-var packageName             = 'baseinstall'; // Package name.
+var text_domain             = 'parsley'; // Your textdomain here.
+var destFile                = 'parsley.pot'; // Name of the transalation file.
+var packageName             = 'parsley'; // Package name.
 var bugReport               = 'https://www.mikejandreau.net/contact/'; // Where can users report bugs.
 var lastTranslator          = 'First Last <your_email@email.com>'; // Last translator Email ID.
 var team                    = 'WPTie <your_email@email.com>'; // Team's Email ID.

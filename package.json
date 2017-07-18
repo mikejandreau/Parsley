@@ -1,5 +1,5 @@
 {
-  "name": "baseinstall",
+  "name": "parsley",
   "author": "Mike Jandreau",
   "version": "1.0.0",
   "description": "",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mikejandreau/Base-Install"
+    "url": "https://github.com/mikejandreau/Parsley"
   },
   "keywords": [
     "wordpress",

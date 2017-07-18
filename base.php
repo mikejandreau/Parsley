@@ -49,8 +49,8 @@
 
 		<h2 class="screen-reader-text"><?php bloginfo( 'name' ); ?></h2>
 
-			<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'baseinstall' ); ?></a>
-			<?php get_header( baseinstall_template_base() ); ?>
+			<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'parsley' ); ?></a>
+			<?php get_header( parsley_template_base() ); ?>
 
 			<div id="content-wrap" class="site-content-wrap">
 			
@@ -60,30 +60,30 @@
 					<div id="content" class="site-content">
 						<div id="primary" class="content-area">
 							<main id="main" class="site-main">
-								<?php include baseinstall_template_path(); ?>
+								<?php include parsley_template_path(); ?>
 							</main>
 						</div>
-						<?php get_sidebar( baseinstall_template_base() ); ?>
+						<?php get_sidebar( parsley_template_base() ); ?>
 
 				<?php elseif ( is_front_page() ) : // if front page is set to show static page, get front-page.php markup ?>
 					<div id="content">
-						<?php include baseinstall_template_path(); ?>
+						<?php include parsley_template_path(); ?>
 
 				<?php else : // all other pages ?>
 					<div id="content" class="site-content">
 						<div id="primary" class="content-area">
 							<main id="main" class="site-main">
-								<?php include baseinstall_template_path(); ?>
+								<?php include parsley_template_path(); ?>
 							</main>
 						</div>
-						<?php get_sidebar( baseinstall_template_base() ); ?>
+						<?php get_sidebar( parsley_template_base() ); ?>
 				<?php endif; ?>
 
 					</div><?php // close #content ?>
 
 			</div><?php // close #content-wrap ?>
 
-			<?php get_footer( baseinstall_template_base() ); ?>
+			<?php get_footer( parsley_template_base() ); ?>
 
 		</div><?php // close #page ?>
 		<?php wp_footer(); ?>

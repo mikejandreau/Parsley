@@ -9,7 +9,7 @@
  * NAV WALKER
  * Custom nav walker to add consistent classes/IDs for easier CSS/JS targeting
  */
-class baseinstall_walker_nav_menu extends Walker_Nav_Menu {
+class parsley_walker_nav_menu extends Walker_Nav_Menu {
 
 	// add classes to ul sub-menus
 	function start_lvl( &$output, $depth ) {
