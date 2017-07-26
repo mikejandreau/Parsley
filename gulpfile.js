@@ -32,20 +32,34 @@ var translatePath           = './languages' // Where to save the translation fil
 
 // Style related
 var styleSRC                = './assets/sass/style.scss'; // Path to main .scss file.
-var styleDestination        = './'; // Places compiled CSS file in root folder, could also be './assets/css/' or some other folder, just remember to update file path in functions.php
+var styleDestination        = './assets/css/'; // Places compiled CSS file in root folder, could also be './assets/css/' or some other folder, just remember to update file path in functions.php
 
 // Admin Style related
 var styleAdminSRC           = './assets/sass/login-style.scss'; // Path to main .scss file.
 var styleAdminDestination   = './assets/css/'; // Path to place compiled admin CSS file
 
 // JavaScript related
-// var scriptSRC             = './assets/js/vendor/*.js'; // Path to JS folder if you don't care about concat order
 var scriptSRC             = [
-                              // './assets/js/vendor/jquery-2.2.4.js', // jQuery is optional
-                              './assets/js/vendor/class-helpers.js', // Pure JS class toggling
+                              // './assets/js/vendor/jquery-2.2.4.js',  // jQuery v2.2.4
+                              // './assets/js/vendor/jquery.js', // jQuery v1.11.1
+
+                              './assets/js/bootstrap/transition.js',
+                              './assets/js/bootstrap/alert.js',
+                              './assets/js/bootstrap/button.js',
+                              './assets/js/bootstrap/carousel.js',
+                              './assets/js/bootstrap/collapse.js',
+                              './assets/js/bootstrap/dropdown.js',
+                              './assets/js/bootstrap/modal.js',
+                              './assets/js/bootstrap/tooltip.js',
+                              './assets/js/bootstrap/popover.js',
+                              './assets/js/bootstrap/scrollspy.js',
+                              './assets/js/bootstrap/tab.js',
+                              './assets/js/bootstrap/affix.js',
+
+                              // './assets/js/vendor/class-helpers.js', // Pure JS class toggling
                               './assets/js/vendor/skip-link-focus-fix.js', // WP skip link
-                              './assets/js/vendor/prism.js', // syntax highlighter for code blocks (optional, has associated SASS file for styles/themes)
-                              './assets/js/custom/*.js' // menu-controls.js, scroll-to-top.js, etc.
+                              // './assets/js/vendor/prism.js', // syntax highlighter for code blocks (optional, has associated SASS file for styles/themes)
+                              // './assets/js/custom/*.js' // menu-controls.js, scroll-to-top.js, etc.
                             ]; // Path to JS vendor and custom files in order.
 var scriptDestination     = './assets/js/'; // Path to save the compiled JS file.
 var scriptFile            = 'scripts'; // Compiled JS file name.
@@ -57,7 +71,7 @@ var imagesDestination       = './assets/img/'; // Destination folder of optimize
 // Watch file paths
 var styleWatchFiles         = './assets/sass/**/*.scss'; // Path to all *.scss files inside css folder and inside them
 var styleAdminWatchFiles    = ['./assets/sass/base/*.scss', './assets/sass/login-style.scss'] ; // Path to admin SCSS file
-var scriptJSWatchFiles      = ['./assets/js/vendor/*.js', './assets/js/custom/*.js']; // Path to all JS files.
+var scriptJSWatchFiles      = ['./assets/js/vendor/*.js', './assets/js/bootstrap/*.js', './assets/js/custom/*.js']; // Path to all JS files.
 var projectPHPWatchFiles    = './**/*.php'; // Path to all PHP files.
 
 // Browsers we care about for autoprefixing
@@ -87,6 +101,7 @@ var mmq          = require('gulp-merge-media-queries'); // Combine matching medi
 
 // JS plugins
 var jshint       = require('gulp-jshint'); // Checks JS for errors
+var fixmyjs      = require("gulp-fixmyjs"); // Fixes errors
 var concat       = require('gulp-concat'); // Concatenates JS files
 var uglify       = require('gulp-uglify'); // Minifies JS files
 
@@ -187,6 +202,9 @@ gulp.task('login-styles', function () {
 // Get JS source files, error check, concat, rename, minify, save to JS folder
 gulp.task( 'scripts', function() {
   gulp.src( scriptSRC )
+  .pipe(fixmyjs({
+    // JSHint settings here
+  }))
   .pipe(jshint())
   .pipe(jshint.reporter('jshint-stylish'))
   .pipe( concat( scriptFile + '.js' ) )

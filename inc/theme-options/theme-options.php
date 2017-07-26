@@ -283,10 +283,10 @@ function parsley_options_custom_scripts() {
     $screen = get_current_screen();
 
     // Register a custom script that depends on jQuery, Media Upload and Thickbox (available from the Core).
-    wp_register_script( 'parsley-custom-admin-scripts', get_template_directory_uri() .'/assets/js/parsley-theme-options.js', array( 'jquery' ) );
+    wp_register_script( 'parsley-custom-admin-scripts', get_template_directory_uri() .'/inc/theme-options/theme-options.js', array( 'jquery' ) );
 
     // Register custom styles.
-    wp_register_style( 'parsley-custom-admin-styles', get_template_directory_uri() .'/assets/css/parsley-theme-options.css' );
+    wp_register_style( 'parsley-custom-admin-styles', get_template_directory_uri() .'/inc/theme-options/theme-options.css' );
     
     // Only load these scripts if we're on the theme options page.
     if ( 'appearance_page_parsley-theme-options' == $screen->id ) {
